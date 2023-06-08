@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import GitHubProvider from 'next-auth/providers/github';
+import FacebookProvider from "next-auth/providers/facebook";
 
 export default NextAuth({
   // Configure one or more authentication providers
@@ -12,6 +13,10 @@ export default NextAuth({
     GitHubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
+    }),
+    FacebookProvider({
+      clientId: process.env.FACEBOOK_ID,
+      clientSecret: process.env.FACEBOOK_SECRET,
     }),
   ],
 
