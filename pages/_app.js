@@ -1,10 +1,19 @@
 import '../styles/globals.css';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { SessionProvider } from 'next-auth/react';
+
+const theme = createTheme({
+  typography: {
+    fontFamily: 'Poppins, sans-serif',
+  },
+});
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </SessionProvider>
   );
 }
