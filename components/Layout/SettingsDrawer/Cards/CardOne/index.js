@@ -1,6 +1,4 @@
 import {
-  Box,
-  Typography,
   CardContent,
   FormControlLabel,
   FormControl,
@@ -8,20 +6,18 @@ import {
   Radio,
   RadioGroup,
 } from '@mui/material';
-import { StyledDivider } from '../..';
+import {
+  StyledBox,
+  StyledTypography,
+  StyledDivider,
+  StyledRadio,
+} from '../../StyledComponents';
 
-export default function CardOne({ theme, handleChangeTheme }) {
+export default function CardOne({ themeMode, handleChangeTheme }) {
   return (
-    <Box
-      sx={{
-        bgcolor: '#1B2430',
-        color: 'gray',
-      }}
-    >
+    <StyledBox>
       <CardContent>
-        <Typography variant="body1" color="#ccc">
-          Layout
-        </Typography>
+        <StyledTypography>Layout</StyledTypography>
       </CardContent>
       <StyledDivider />
       <CardContent>
@@ -31,22 +27,22 @@ export default function CardOne({ theme, handleChangeTheme }) {
             row
             aria-labelledby="row-radio-buttons-group-label"
             name="row-radio-buttons-group"
-            value={theme}
+            value={themeMode}
             onChange={handleChangeTheme}
           >
             <FormControlLabel
               value="light"
-              control={<Radio sx={{ color: 'inherit' }} />}
+              control={<StyledRadio />}
               label="Light"
             />
             <FormControlLabel
               value="dark"
-              control={<Radio sx={{ color: 'inherit' }} />}
+              control={<StyledRadio />}
               label="Dark"
             />
           </RadioGroup>
         </FormControl>
       </CardContent>
-    </Box>
+    </StyledBox>
   );
 }

@@ -1,6 +1,6 @@
 import { useSession, signIn, signOut } from 'next-auth/react';
+import { Button, Typography } from '@mui/material';
 import MainContainer from '@components/Layout/MainContainer';
-import SettingsDrawer from '@components/Layout/SettingsDrawer';
 
 export default function Home() {
   const { data: session } = useSession();
@@ -10,16 +10,25 @@ export default function Home() {
       <MainContainer>
         Signed in as {session.user.email}
         <br />
-        <button onClick={() => signOut({ callbackUrl: '/' })}>Sign out</button>
+        <Button
+          variant="contained"
+          onClick={() => signOut({ callbackUrl: '/' })}
+        >
+          Sign out
+        </Button>
       </MainContainer>
     );
   }
+
   return (
     <MainContainer>
       Not signed in
       <br />
-      <button onClick={() => signIn()}>Sign in</button>
-      <SettingsDrawer />
+      <Button variant="contained" onClick={() => signIn()}>
+        Sign in
+      </Button>
+      <br />
+      <Typography variant="h2">TEST</Typography>
     </MainContainer>
   );
 }
