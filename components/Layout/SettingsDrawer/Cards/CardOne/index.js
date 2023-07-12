@@ -13,7 +13,11 @@ import {
   StyledRadio,
 } from '../../StyledComponents';
 
-export default function CardOne({ themeMode, handleChangeTheme }) {
+export default function CardOne({
+  themeMode,
+  handleChangeTheme,
+  setThemeMode,
+}) {
   return (
     <StyledBox>
       <CardContent>
@@ -34,11 +38,13 @@ export default function CardOne({ themeMode, handleChangeTheme }) {
               value="light"
               control={<StyledRadio />}
               label="Light"
+              sx={{ color: themeMode === 'light' ? 'inherit' : '' }}
             />
             <FormControlLabel
               value="dark"
               control={<StyledRadio />}
               label="Dark"
+              sx={{ color: themeMode === 'dark' ? 'inherit' : '' }}
             />
           </RadioGroup>
         </FormControl>

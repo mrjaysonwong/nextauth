@@ -1,6 +1,7 @@
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { styled, keyframes } from '@mui/system';
 
+
 const spin = keyframes`
 from {
     transform: rotate(0deg);
@@ -19,7 +20,9 @@ const RotatedIcon = styled(SettingsOutlinedIcon)({
 export default function SettingsIcon() {
   return (
     <>
-      <RotatedIcon />
+ 
+        <RotatedIcon />
+    
     </>
   );
 }

@@ -30,16 +30,19 @@ export default function CardTwo({ font, handleChangeFont }) {
               value="Roboto"
               control={<StyledRadio />}
               label="Roboto"
+              sx={{ color: font === 'Roboto' ? 'inherit' : '' }}
             />
             <FormControlLabel
               value="Poppins"
               control={<StyledRadio />}
               label="Poppins"
+              sx={{ color: font === 'Poppins' ? 'inherit' : '' }}
             />
             <FormControlLabel
               value="Montserrat"
               control={<StyledRadio />}
               label="Montserrat"
+              sx={{ color: font === 'Montserrat' ? 'inherit' : '' }}
             />
           </RadioGroup>
         </FormControl>

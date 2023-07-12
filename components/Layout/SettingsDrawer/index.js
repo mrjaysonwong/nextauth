@@ -8,16 +8,24 @@ import {
 } from './StyledComponents';
 import CardOne from './Cards/CardOne';
 import CardTwo from './Cards/CardTwo';
+import { Tooltip } from '@mui/material';
 
-export default function SettingsDrawer({ font, handleChangeFont }) {
+export default function SettingsDrawer({
+  font,
+  handleChangeFont,
+  themeMode,
+  setThemeMode,
+}) {
   const [state, setState] = useState({
     right: false,
   });
 
-  const [themeMode, setThemeMode] = useState('dark');
+  // const [themeMode, setThemeMode] = useState('dark');
 
   const handleChangeTheme = (event) => {
-    setThemeMode(event.target.value);
+    const theme = event.target.value;
+    setThemeMode(theme);
+    localStorage.setItem('theme', theme);
   };
 
   const toggleDrawer = (anchor, open) => () => {
@@ -25,15 +33,19 @@ export default function SettingsDrawer({ font, handleChangeFont }) {
   };
 
   const list = (anchor) => (
-    <Box sx={{ width: 250 }} onClick={toggleDrawer(anchor, true)}>
+    <Box
+      sx={{ width: 250, bgcolor: themeMode === 'dark' ? '#161b22' : '#fff' }}
+      onClick={toggleDrawer(anchor, true)}
+    >
       <StyledDrawerList>
-        <StyledCard>
+        <StyledCard theme={themeMode}>
           <CardOne
             themeMode={themeMode}
             handleChangeTheme={handleChangeTheme}
+            setThemeMode={setThemeMode}
           />
         </StyledCard>
-        <StyledCard>
+        <StyledCard theme={themeMode}>
           <CardTwo font={font} handleChangeFont={handleChangeFont} />
         </StyledCard>
       </StyledDrawerList>
@@ -42,9 +54,11 @@ export default function SettingsDrawer({ font, handleChangeFont }) {
 
   return (
     <>
-      <StyledIconButton onClick={toggleDrawer('right', true)}>
-        <SettingsIcon />
-      </StyledIconButton>
+      <Tooltip title="Live Customize" placement="bottom" arrow>
+        <StyledIconButton onClick={toggleDrawer('right', true)}>
+          <SettingsIcon />
+        </StyledIconButton>
+      </Tooltip>
 
       <Drawer
         anchor={'right'}

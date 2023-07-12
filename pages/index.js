@@ -7,28 +7,29 @@ export default function Home() {
 
   if (session) {
     return (
-      <MainContainer>
-        Signed in as {session.user.email}
-        <br />
+      <>
+        <Typography variant="body1">
+          Signed in as {session.user.email}
+        </Typography>
+
         <Button
           variant="contained"
           onClick={() => signOut({ callbackUrl: '/' })}
         >
           Sign out
         </Button>
-      </MainContainer>
+      </>
     );
   }
 
   return (
-    <MainContainer>
-      Not signed in
-      <br />
+    <>
+      <Typography variant="body1">Not signed in</Typography>
+
       <Button variant="contained" onClick={() => signIn()}>
         Sign in
       </Button>
       <br />
-      <Typography variant="h2">TEST</Typography>
-    </MainContainer>
+    </>
   );
 }

@@ -23,27 +23,28 @@ export const StyledIconButton = styled(IconButton)({
 export const StyledDrawerList = styled(List)({
   minHeight: '100vh',
   padding: '1rem',
-  backgroundColor: '#1B2430',
-  ' .MuiPaper-root': { border: '1px solid #344254' },
 });
 
-export const StyledCard = styled(Card)({
+export const StyledCard = styled(Card)(({ theme }) => ({
   ' :not(:last-child)': {
     marginBottom: '1rem',
   },
-});
+  backgroundColor: theme === 'dark' ? '#161b22' : '#fff',
+  color: theme === 'dark' ? '#fff' : '#161b22',
+  border: theme === 'dark' ? '1px solid rgba(128, 128, 128, 0.5)' : '',
+}));
 
 export const StyledDivider = styled(Divider)({
-  backgroundColor: '#344254',
+  backgroundColor: 'inherit',
 });
 
 export const StyledBox = styled(Box)({
-  backgroundColor: '#1B2430',
-  color: 'gray',
+  backgroundColor: 'inherit',
+  border: '1px solid rgba(52, 66, 84, 0.2)',
 });
 
 export const StyledTypography = styled(Typography)({
-  color: '#ccc',
+  color: 'inherit',
 });
 
 export const StyledRadio = styled(Radio)({
