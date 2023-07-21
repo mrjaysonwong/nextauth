@@ -32,9 +32,6 @@ export default function SettingsDrawer({
         <StyledCard>
           <CardTwo font={font} handleChangeFont={handleChangeFont} />
         </StyledCard>
-        <StyledCard>
-          <CardTwo font={font} handleChangeFont={handleChangeFont} />
-        </StyledCard>
       </StyledDrawerList>
     </Box>
   );
