@@ -2,22 +2,20 @@ import {
   CardContent,
   FormControlLabel,
   FormControl,
+  Radio,
   RadioGroup,
+  Divider,
+  Box,
+  Typography,
 } from '@mui/material';
-import {
-  StyledBox,
-  StyledTypography,
-  StyledDivider,
-  StyledRadio,
-} from '../../StyledComponents';
 
 export default function CardTwo({ font, handleChangeFont }) {
   return (
-    <StyledBox>
+    <Box>
       <CardContent>
-        <StyledTypography>Font Family</StyledTypography>
+        <Typography>Font Family</Typography>
       </CardContent>
-      <StyledDivider />
+      <Divider />
       <CardContent>
         <FormControl>
           <RadioGroup
@@ -28,25 +26,22 @@ export default function CardTwo({ font, handleChangeFont }) {
           >
             <FormControlLabel
               value="Roboto"
-              control={<StyledRadio />}
+              control={<Radio />}
               label="Roboto"
-              sx={{ color: font === 'Roboto' ? 'inherit' : '' }}
             />
             <FormControlLabel
               value="Poppins"
-              control={<StyledRadio />}
+              control={<Radio />}
               label="Poppins"
-              sx={{ color: font === 'Poppins' ? 'inherit' : '' }}
             />
             <FormControlLabel
               value="Montserrat"
-              control={<StyledRadio />}
+              control={<Radio />}
               label="Montserrat"
-              sx={{ color: font === 'Montserrat' ? 'inherit' : '' }}
             />
           </RadioGroup>
         </FormControl>
       </CardContent>
-    </StyledBox>
+    </Box>
   );
 }

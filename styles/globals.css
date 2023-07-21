@@ -6,6 +6,7 @@
   --color-background: #161b22;
   --color-shadow: rgba(55, 52, 232, 0.796);
   --color-border: rgba(128, 128, 128, 0.5);
+  --color-scrollbar: #b2b2b2;
 }
 
 html,
@@ -33,3 +34,26 @@ a {
     background: black;
   }
 } */
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: gray;
+  scroll-behavior: smooth;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px rgb(255, 255, 255);
+  border-radius: 20px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-scrollbar);
+  border-radius: 20px;
+}

@@ -5,25 +5,18 @@ import {
   FormLabel,
   Radio,
   RadioGroup,
+  Divider,
+  Box,
+  Typography,
 } from '@mui/material';
-import {
-  StyledBox,
-  StyledTypography,
-  StyledDivider,
-  StyledRadio,
-} from '../../StyledComponents';
 
-export default function CardOne({
-  themeMode,
-  handleChangeTheme,
-  setThemeMode,
-}) {
+export default function CardOne({ themeMode, handleChangeTheme }) {
   return (
-    <StyledBox>
+    <Box>
       <CardContent>
-        <StyledTypography>Layout</StyledTypography>
+        <Typography>Layout</Typography>
       </CardContent>
-      <StyledDivider />
+      <Divider />
       <CardContent>
         <FormControl>
           <FormLabel sx={{ color: 'inherit' }}>Theme</FormLabel>
@@ -34,21 +27,11 @@ export default function CardOne({
             value={themeMode}
             onChange={handleChangeTheme}
           >
-            <FormControlLabel
-              value="light"
-              control={<StyledRadio />}
-              label="Light"
-              sx={{ color: themeMode === 'light' ? 'inherit' : '' }}
-            />
-            <FormControlLabel
-              value="dark"
-              control={<StyledRadio />}
-              label="Dark"
-              sx={{ color: themeMode === 'dark' ? 'inherit' : '' }}
-            />
+            <FormControlLabel value="light" control={<Radio />} label="Light" />
+            <FormControlLabel value="dark" control={<Radio />} label="Dark" />
           </RadioGroup>
         </FormControl>
       </CardContent>
-    </StyledBox>
+    </Box>
   );
 }
