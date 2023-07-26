@@ -30,5 +30,3 @@ export const StyledCard = styled(Card)({
     marginBottom: '1rem',
   },
 });
-
-export const StyledButton = styled(Button)({});

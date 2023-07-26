@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import {
   CardContent,
   FormControlLabel,
@@ -8,8 +9,13 @@ import {
   Box,
   Typography,
 } from '@mui/material';
+import { SettingsContext } from '@components/Layout/SettingsDrawer/index';
 
-export default function CardTwo({ font, handleChangeFont }) {
+export default function CardTwo() {
+  const settingsValue = useContext(SettingsContext);
+  const font = settingsValue.font;
+  const handleChangeFont = settingsValue.handleChangeFont;
+
   return (
     <Box>
       <CardContent>
@@ -19,8 +25,8 @@ export default function CardTwo({ font, handleChangeFont }) {
       <CardContent>
         <FormControl>
           <RadioGroup
-            aria-labelledby="font-radio-buttons-group-label"
-            name="font-radio-buttons-group"
+            aria-labelledby="fontfamily-radio-buttons-group-label"
+            name="fontfamily-radio-buttons-group"
             value={font}
             onChange={handleChangeFont}
           >

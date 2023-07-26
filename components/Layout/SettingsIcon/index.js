@@ -1,5 +1,4 @@
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import { IconButton } from '@mui/material';
 import { styled, keyframes } from '@mui/system';
 
 const spin = keyframes`

@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import {
   CardContent,
   FormControlLabel,
@@ -9,8 +10,13 @@ import {
   Box,
   Typography,
 } from '@mui/material';
+import { SettingsContext } from '@components/Layout/SettingsDrawer/index';
 
-export default function CardOne({ themeMode, handleChangeTheme }) {
+export default function CardOne() {
+  const settingsValue = useContext(SettingsContext);
+  const mode = settingsValue.mode;
+  const handleChangeTheme = settingsValue.handleChangeTheme;
+
   return (
     <Box>
       <CardContent>
@@ -19,16 +25,26 @@ export default function CardOne({ themeMode, handleChangeTheme }) {
       <Divider />
       <CardContent>
         <FormControl>
-          <FormLabel sx={{ color: 'inherit' }}>Theme</FormLabel>
+          <FormLabel>Theme</FormLabel>
           <RadioGroup
             row
-            aria-labelledby="row-radio-buttons-group-label"
+            aria-labelledby="row-radio-buttons-group-label-theme"
             name="row-radio-buttons-group"
-            value={themeMode}
+            value={mode}
             onChange={handleChangeTheme}
           >
-            <FormControlLabel value="light" control={<Radio />} label="Light" />
-            <FormControlLabel value="dark" control={<Radio />} label="Dark" />
+            <FormControlLabel
+              value="light"
+              control={<Radio />}
+              label="Light"
+              aria-label="light mode"
+            />
+            <FormControlLabel
+              value="dark"
+              control={<Radio />}
+              label="Dark"
+              aria-label="dark mode"
+            />
           </RadioGroup>
         </FormControl>
       </CardContent>
