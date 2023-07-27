@@ -36,10 +36,8 @@ export default function MuiThemeProvider({ children }) {
 
   useEffect(() => {
     // initial theme mode on first visit
-    // if (true && true) -> set to dark mode as initial theme
     if (prefersDarkMode && !!cookies.themePreference !== true) {
       setMode('dark');
-      return;
     }
   }, [prefersDarkMode, cookies.themePreference]);
 
@@ -56,14 +54,6 @@ export default function MuiThemeProvider({ children }) {
     setCookies('themePreference', mode, { path: '/', secure: true });
     setCookies('fontPreference', font, { path: '/', secure: true });
   }, [mode, font, setCookies]);
-
-  // update and persist theme mode
-  useEffect(() => {
-    const themeModeSetting = cookies.themePreference;
-    if (themeModeSetting) {
-      setMode(themeModeSetting);
-    }
-  }, [cookies.themePreference]);
 
   // // update and persist font family
   useEffect(() => {
@@ -90,7 +80,6 @@ export default function MuiThemeProvider({ children }) {
 
   const settingsValue = {
     mode,
-    setMode,
     handleChangeTheme,
     font,
     handleChangeFont,
