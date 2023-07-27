@@ -10,12 +10,11 @@ import {
   Box,
   Typography,
 } from '@mui/material';
-import { SettingsContext } from '@components/Layout/SettingsDrawer/index';
+import { SettingsContext } from 'src/theme/theme';
 
 export default function CardOne() {
   const settingsValue = useContext(SettingsContext);
-  const mode = settingsValue.mode;
-  const handleChangeTheme = settingsValue.handleChangeTheme;
+  const { mode, handleChangeTheme } = settingsValue;
 
   return (
     <Box>

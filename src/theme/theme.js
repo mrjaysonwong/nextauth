@@ -1,4 +1,11 @@
-import { useState, useMemo, useEffect, useContext, useRef } from 'react';
+import {
+  useState,
+  useMemo,
+  useEffect,
+  useContext,
+  useRef,
+  createContext,
+} from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, useMediaQuery } from '@mui/material';
 import SettingsDrawer from '@components/Layout/SettingsDrawer';
@@ -7,14 +14,15 @@ import ColorModeContext from 'src/context/ColorModeContext';
 import { useCookies, Cookies, CookiesProvider } from 'react-cookie';
 import GetDesignTokens from 'styles/theme';
 
+export const SettingsContext = createContext();
+
 export default function MuiThemeProvider({ children }) {
   const contextValue = useContext(ThemeMode);
 
-  const themePreference = contextValue.themeSetting;
-  const fontPreference = contextValue.fontSetting;
+  const { themeSetting, fontSetting } = contextValue;
 
-  const [font, setFont] = useState(fontPreference || 'Poppins');
-  const [mode, setMode] = useState(themePreference || 'light');
+  const [mode, setMode] = useState(themeSetting || 'light');
+  const [font, setFont] = useState(fontSetting || 'Poppins');
 
   const [cookies, setCookies] = useCookies([
     'themePreference',
@@ -36,7 +44,7 @@ export default function MuiThemeProvider({ children }) {
 
   useEffect(() => {
     // initial theme mode on first visit
-    if (prefersDarkMode && !!cookies.themePreference !== true) {
+    if (prefersDarkMode && !cookies.themePreference) {
       setMode('dark');
     }
   }, [prefersDarkMode, cookies.themePreference]);
@@ -88,15 +96,17 @@ export default function MuiThemeProvider({ children }) {
   return (
     <>
       <ColorModeContext.Provider value={colorMode}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <CookiesProvider
-            cookies={isBrowser ? undefined : new Cookies(cookies)}
-          >
-            {children}
-            <SettingsDrawer props={settingsValue} />
-          </CookiesProvider>
-        </ThemeProvider>
+        <SettingsContext.Provider value={settingsValue}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <CookiesProvider
+              cookies={isBrowser ? undefined : new Cookies(cookies)}
+            >
+              {children}
+              <SettingsDrawer />
+            </CookiesProvider>
+          </ThemeProvider>
+        </SettingsContext.Provider>
       </ColorModeContext.Provider>
     </>
   );

@@ -9,12 +9,11 @@ import {
   Box,
   Typography,
 } from '@mui/material';
-import { SettingsContext } from '@components/Layout/SettingsDrawer/index';
+import { SettingsContext } from 'src/theme/theme';
 
 export default function CardTwo() {
   const settingsValue = useContext(SettingsContext);
-  const font = settingsValue.font;
-  const handleChangeFont = settingsValue.handleChangeFont;
+  const { font, handleChangeFont } = settingsValue;
 
   return (
     <Box>
